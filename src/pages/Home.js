@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import {Comment} from '../components';
+
 
 import styles from '../styles/home.module.css';
 
@@ -42,15 +44,7 @@ const Home = ({posts}) => {
               </div>
     
               <div className={styles.postCommentsList}>
-                <div className={styles.postCommentsItem}>
-                  <div className={styles.postCommentHeader}>
-                    <span className={styles.postCommentAuthor}>Bill</span>
-                    <span className={styles.postCommentTime}>a minute ago</span>
-                    <span className={styles.postCommentLikes}>22</span>
-                  </div>
-    
-                  <div className={styles.postCommentContent}>Random comment</div>
-                </div>
+                <Comment />
               </div>
             </div>
           </div>

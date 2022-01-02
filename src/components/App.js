@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Loader } from '.';
+import { Loader,Navbar } from './';
 import { getPosts } from '../api';
 import { Home } from '../pages'
 
@@ -30,6 +30,7 @@ function App() {
   return (
     <div className="App">
       {/* <h1>Hello World</h1> */}
+      <Navbar />
     <Home posts={posts}/>
     </div>
   );
