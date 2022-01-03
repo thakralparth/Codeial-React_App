@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route,Link } from 'react-router-dom'
 import { Loader,Navbar } from './';
 import { getPosts } from '../api';
 import { Home, Login } from '../pages'
@@ -44,8 +44,8 @@ function App() {
   return (
     <div className="App">
       {/* <h1>Hello World</h1> */}
-      <Navbar />
       <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home posts={posts}/>} />
           
