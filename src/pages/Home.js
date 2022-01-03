@@ -44,7 +44,10 @@ const Home = ({posts}) => {
               </div>
     
               <div className={styles.postCommentsList}>
-                <Comment />
+                  {post.comments.map((comment)=>(
+                      <Comment comment={comment} />
+                  ))}
+                
               </div>
             </div>
           </div>
