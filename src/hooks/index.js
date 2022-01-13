@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { login as userLogin } from "../api";
 import { getItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemFromLocalStorage, setItemInLocalStorage } from "../utils";
 import jwt from 'jwt-decode';
+import { register } from "../api";
 
 
 export const useAuth=()=>{
@@ -41,6 +42,23 @@ export const useProvideAuth= ()=>{
         }
     };
 
+    const signup = async (name,email,password,confirmPassword) => {
+        const response=await register(name,email,password,confirmPassword);
+
+        if(response.success){
+            // setUser(response.data.user);
+            // setItemInLocalStorage(LOCALSTORAGE_TOKEN_KEY,response.data.token?response.data.token:null);
+            return{
+                success:true,
+            };
+        }else{
+            return{
+                success:false,
+                message:response.message,
+            }
+        }
+    };
+
     const logout = ()=>{
         setUser(null);
         removeItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
@@ -50,6 +68,7 @@ export const useProvideAuth= ()=>{
         user,
         loading,
         login,
-        logout
+        logout,
+        signup,
     }
 }

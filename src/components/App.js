@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 import { BrowserRouter as Router,Routes, Route,Link } from 'react-router-dom'
 import { Loader,Navbar } from './';
-import { getPosts } from '../api';
-import { Home, Login } from '../pages'
+// import { getPosts } from '../api';
+import { Home, Login, Signup} from '../pages'
 import { useAuth } from '../hooks';
 
 
@@ -50,13 +50,13 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<Home posts={posts}/>} /> */}
           
-        <Route path="/" element={<Home posts={[]}/>} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/login" element={<Login />} />
           
         
 
-        <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Signup />} />
           
         
 
