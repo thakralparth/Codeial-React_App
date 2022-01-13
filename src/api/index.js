@@ -1,11 +1,13 @@
 import { API_URLS,LOCALSTORAGE_TOKEN_KEY } from "../utils";
+import { getFormBody } from "../utils";
 
 const customFetch= async (url,{ body , ...customConfig })=>{    //body -> userid/password    destructure
     const token = window.localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);   //get token from API after logging in for storing in local storgae
 
     const headers={
-        'content-type': 'application/json',
-        Accept: 'application/json'
+        // 'content-type': 'application/json',
+        // Accept: 'application/json'
+        'content-type': 'application/x-www-form-urlencoded',  //server accepts data in format form-urlencoded
     }
 
     if(token){
@@ -21,7 +23,8 @@ const customFetch= async (url,{ body , ...customConfig })=>{    //body -> userid
     }
     
     if(body){
-        config.body = JSON.stringify(body);
+        // config.body = JSON.stringify(body);
+        config.body=getFormBody(body);
     }
     
 
