@@ -3,7 +3,7 @@
 import { BrowserRouter as Router,Routes, Route,Link } from 'react-router-dom'
 import { Loader,Navbar } from './';
 // import { getPosts } from '../api';
-import { Home, Login, Signup} from '../pages'
+import { Home, Login, Settings, Signup} from '../pages'
 import { useAuth } from '../hooks';
 
 
@@ -57,6 +57,8 @@ function App() {
         
 
         <Route path="/register" element={<Signup />} />
+
+        <Route path="/settings" element={<Settings />} />
           
         
 

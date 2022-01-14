@@ -14,12 +14,15 @@ const Navbar= ()=>{
                 </Link>
             </div>
             <div className={styles.rightNav}>
-                {auth.user && <div className={styles.user}>
-                    <a href='/'>
-                    <img src="https://cdn-icons.flaticon.com/png/128/2202/premium/2202112.png?token=exp=1641154389~hmac=f187d32f1036e6335e0df8e005cffd20" alt='' className={styles.userDp}/> 
-                    </a>
+                {auth.user && (<div className={styles.user}>
+                    <Link to="/settings">
+                    <img 
+                    src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" 
+                    alt="error" 
+                    className={styles.userDp} /> 
+                    </Link>
                     <span>{auth.user.name}</span>
-                </div>}
+                </div>)}
 
                 <div className={styles.navLinks}>
                     <ul>
