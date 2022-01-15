@@ -29,10 +29,13 @@ export const useProvideAuth= ()=>{
     const updateUser = async (userId, name , password , confirmPassword) =>{
         const response= await editProfile(userId, name , password , confirmPassword);
 
-        console.log('response',response);
+        // console.log('response',response);
         if(response.success){
             setUser(response.data.user);
-
+            setItemInLocalStorage(
+                LOCALSTORAGE_TOKEN_KEY,
+                response.data.token? response.data.token : null
+            );
             return {
                 success:true,
             }
@@ -46,7 +49,7 @@ export const useProvideAuth= ()=>{
 
     const login = async (email,password) => {
         const response=await userLogin(email,password);
-
+        console.log('response login',response);
         if(response.success){
             setUser(response.data.user);
             setItemInLocalStorage(LOCALSTORAGE_TOKEN_KEY,response.data.token?response.data.token:null);
