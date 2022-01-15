@@ -3,7 +3,7 @@
 import { BrowserRouter as Router,Routes, Route,Link, Navigate } from 'react-router-dom'
 import { Loader,Navbar } from './';
 // import { getPosts } from '../api';
-import { Home, Login, Settings, Signup} from '../pages'
+import { Home, Login, Settings, Signup,UserProfile} from '../pages'
 import { useAuth } from '../hooks';
 
 
@@ -77,13 +77,15 @@ function App() {
 
         <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
 
+        <Route path="/user/:userId" element={<PrivateRoute ><UserProfile /></PrivateRoute>} />
+
         
           
         
 
         <Route path="/userinfo" element={<UserInfo />} />
           
-        <Route path="*" element={<Page404 />} />
+        {/* <Route path="*" element={<Page404 />} /> */}
         
       </Routes>
       </Router>
