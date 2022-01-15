@@ -1,4 +1,5 @@
 import styles from '../styles/login.module.css';
+import {Navigate, useNavigate} from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { useState } from 'react';
 
@@ -12,6 +13,7 @@ const Login = () =>{
     const[loggingIn, setLoggingIn]=useState(false);
     const { addToast } = useToasts();
     const auth=useAuth();
+    const navigate=useNavigate();
     console.log(auth);
 
     const handleSubmit=async (e) => {
@@ -38,6 +40,10 @@ const Login = () =>{
             })
         }
         setLoggingIn(false);
+    }
+
+    if(auth.user){
+         return <Navigate to="/"/>
     }
 
     return (
