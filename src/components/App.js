@@ -1,11 +1,28 @@
 // import { useEffect, useState } from 'react';
 
-import { BrowserRouter as Router,Routes, Route,Link } from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route,Link, Navigate } from 'react-router-dom'
 import { Loader,Navbar } from './';
 // import { getPosts } from '../api';
 import { Home, Login, Settings, Signup} from '../pages'
 import { useAuth } from '../hooks';
 
+
+function PrivateRoute({children}){
+  const auth =useAuth();
+
+  return auth.user ? children : <Navigate to="/login" />
+     
+    
+    
+      // if(auth.user){
+      //   return children;
+      // }
+
+      // return <Navigate to="/login" />
+    
+    
+  
+}
 
 const About = ()=>{
   return <h1>About</h1>
@@ -58,7 +75,9 @@ function App() {
 
         <Route path="/register" element={<Signup />} />
 
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
+
+        
           
         
 

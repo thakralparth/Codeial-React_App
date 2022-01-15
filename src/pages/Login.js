@@ -13,7 +13,7 @@ const Login = () =>{
     const[loggingIn, setLoggingIn]=useState(false);
     const { addToast } = useToasts();
     const auth=useAuth();
-    const navigate=useNavigate();
+    // const navigate=useNavigate();
     console.log(auth);
 
     const handleSubmit=async (e) => {
