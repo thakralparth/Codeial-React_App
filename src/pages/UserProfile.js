@@ -1,19 +1,50 @@
 import styles from '../styles/settings.module.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
+import { fetchUserProfile } from '../api';
+import { Loader } from '../components';
 
 
 const UserProfile= () =>{
-    const location = useLocation();
-    console.log('location',location);
+    const[user,setUser] = useState({});
+    const [loading,setLoading]=useState(true);
+    const { userId } =useParams();
+    const { addToast } = useToasts();
+    const navigate= useNavigate();
+    // const location = useLocation();
+    // console.log('location',location);
     
-    const {user = {}}=location.state;  //user ={} if state is empty user is empty object
-    
+    // const {user = {}}=location.state;  //user ={} if state is empty user is empty object
     
 
+    console.log('userId',userId);
+
+    useEffect(()=>{
+        const getUser = async () => {
+            const response = await fetchUserProfile(userId);
+            console.log('response',response);
+
+            if(response.success){
+                setUser(response.data.user);
+            }else{
+                addToast(response.message,{
+                    appearance:'error'
+                });
+                 navigate('/');
+            }
+
+            setLoading(false);
+        }
+
+        getUser();
+    },[userId,navigate,addToast]);
+    
+    if(loading){
+        return <Loader />;
+    }
     return (
         <div className={styles.settings}>
             <div className={styles.imgContainer}>
