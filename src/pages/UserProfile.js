@@ -11,9 +11,11 @@ import { Loader } from '../components';
 const UserProfile= () =>{
     const[user,setUser] = useState({});
     const [loading,setLoading]=useState(true);
-    const { userId } =useParams();
+    const { userId } = useParams();
     const { addToast } = useToasts();
     const navigate= useNavigate();
+    const auth = useAuth();
+    console.log('auth',auth);
     // const location = useLocation();
     // console.log('location',location);
     
@@ -45,6 +47,21 @@ const UserProfile= () =>{
     if(loading){
         return <Loader />;
     }
+
+
+    const checkIfUserIsAFriend = ()=>{
+        const friends = auth.user.friends;
+        console.log('friends', friends);
+        const friendIds = friends.map((friend) => friend.to_user._id);
+        const index = friendIds.indexOf(userId);
+
+        if(index!== -1){
+            return true;
+        }
+        return false;
+    }
+
+    // const showAddFriendsBtn = checkIfUserIsAFriend();
     return (
         <div className={styles.settings}>
             <div className={styles.imgContainer}>
@@ -69,8 +86,12 @@ const UserProfile= () =>{
             
 
             <div className={styles.btnGrp}>
-                    <button className={`button ${styles.saveBtn}`}>Add Friend</button>
-                    <button className={`button ${styles.saveBtn}`}>Remove Friend</button>
+                {checkIfUserIsAFriend() ? (<button className={`button ${styles.saveBtn}`}>Remove Friend</button>) :
+                    (<button className={`button ${styles.saveBtn}`}>Add Friend</button>)
+                
+            }
+                    
+                    
 
             </div>
         </div>
