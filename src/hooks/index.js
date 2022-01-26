@@ -130,7 +130,7 @@ export const useProvideAuth= ()=>{
 }
 
 
-export const usePosts=()=>{
+export const usePosts=()=>{    //global state
     return useContext(PostsContext);
 }
 
@@ -152,9 +152,16 @@ export const useProvidePosts= ()=>{
         fetchPosts();
     
       },[]);
+
+      const addPostToState = (post)=>{
+        const newPosts = [post,...posts];
+
+        setPosts(newPosts);
+      };
     
     return {
         data:posts,
-        loading
+        loading,
+        addPostToState
     }
 }
