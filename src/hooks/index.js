@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../providers/AuthProvider";
-import { editProfile, login as userLogin, fetchUserFriends} from "../api";
+import { editProfile, login as userLogin, fetchUserFriends, addFriend} from "../api";
 import { getItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemFromLocalStorage, setItemInLocalStorage } from "../utils";
 import jwt from 'jwt-decode';
 import { register } from "../api";
@@ -100,6 +100,24 @@ export const useProvideAuth= ()=>{
         removeItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
     };
 
+    const updateUserFriends = (addFriend, friend) =>{
+        if(addFriend){
+            setUser({
+                ...user,
+                friends:[...user.friends,friend],
+            });
+            return;
+        }
+
+        const newFriends = user.friends.filter(
+            (f)=>f.to_user._id !== friend.to_user._id 
+        );
+        setUser({
+            ...user,
+            friends:newFriends,
+        });
+    };
+
     return {
         user,
         loading,
@@ -107,5 +125,6 @@ export const useProvideAuth= ()=>{
         logout,
         signup,
         updateUser,
+        updateUserFriends,
     }
 }
