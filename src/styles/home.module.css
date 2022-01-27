@@ -70,6 +70,23 @@
     display: flex;
     align-items: center;
   }
+
+  .postLike button{
+    border:none;
+    background: none;
+  }
+
+  .blue{
+    color: blue;
+  }
+  .noblue{
+    
+  }
+
+  /* .postLike button:focus{
+    border:none;
+    outline:none;
+  } */
   .postCommentsIcon {
     margin-left: 15px;
     display: flex;
