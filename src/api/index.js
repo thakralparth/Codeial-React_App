@@ -126,3 +126,10 @@ export const fetchUserFriends = () => {
     });
   };
 
+  export const searchUsers = ( Searchtext)=> {
+    return customFetch(API_URLS.searchUsers(Searchtext), {
+      method: 'GET',
+    });
+  };
+
+
