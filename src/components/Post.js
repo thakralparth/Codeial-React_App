@@ -91,7 +91,7 @@ const Post = ({post}) => {
       
                   <div className={styles.postCommentsIcon}>
                     <img
-                      src="https://cdn-icons.flaticon.com/png/128/3193/premium/3193015.png?token=exp=1643204576~hmac=bfe6727df3ff820486ce98230f65e22b"
+                      src="https://cdn-icons-png.flaticon.com/128/1380/1380338.png"
                       alt="comments-icon"
                     />
                     <span>2</span>
