@@ -1,5 +1,5 @@
 import styles from '../styles/settings.module.css';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
 import { useEffect, useState } from 'react';

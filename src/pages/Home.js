@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 // import {Comment} from '../components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
-import { getPosts } from '../api';
-import { Post, Loader,Comment,FriendsList, CreatePost } from '../components';
+// import { useEffect, useState } from 'react';
+// import { getPosts } from '../api';
+import { Post, Loader,FriendsList, CreatePost } from '../components';
 
 import styles from '../styles/home.module.css';
 import { useAuth, usePosts } from '../hooks';
@@ -35,8 +35,8 @@ const Home = () => {
   );
 };
 
-Home.propTypes={
-    posts:PropTypes.object.isRequired,
-}
+// Home.propTypes={
+//     posts:PropTypes.object.isRequired,
+// }
 
 export default Home;

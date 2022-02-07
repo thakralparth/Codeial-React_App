@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext, PostsContext } from "../providers";
-import { editProfile, login as userLogin, fetchUserFriends, addFriend, getPosts} from "../api";
+import { editProfile, login as userLogin, fetchUserFriends, getPosts} from "../api";
 import { getItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemFromLocalStorage, setItemInLocalStorage } from "../utils";
 import jwt from 'jwt-decode';
 import { register } from "../api";

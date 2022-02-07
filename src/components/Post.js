@@ -19,6 +19,8 @@ const Post = ({post}) => {
     if(e.key === 'Enter'){
       setCreatingComment(true);
 
+      console.log(createComment);
+
       const response = await createComment(comment,post._id);
 
       if(response.success){
@@ -28,6 +30,7 @@ const Post = ({post}) => {
           appearance:'success'
         });
       }else{
+        
         addToast(response.message,{
           appearance:'error',
         });
@@ -108,7 +111,7 @@ const Post = ({post}) => {
       
                 <div className={styles.postCommentsList}>
                     {post.comments.map((comment)=>(
-                        <Comment comment={comment} />
+                        <Comment comment={comment} key={`comment-${comment._id}`} />
                     ))}
                   
                 </div>
@@ -118,8 +121,8 @@ const Post = ({post}) => {
   )
 }
 
-Post.propTypes = {
-  posts: PropTypes.object.isRequired,
-};
+// Post.propTypes = {
+//   posts: PropTypes.object.isRequired,
+// };
 
 export default Post;

@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react';
 
-import { BrowserRouter as Router,Routes, Route,Link, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route, Navigate } from 'react-router-dom'
 import { Loader,Navbar } from './';
 // import { getPosts } from '../api';
 import { Home, Login, Settings, Signup,UserProfile} from '../pages'
@@ -24,17 +24,17 @@ function PrivateRoute({children}){
   
 }
 
-const About = ()=>{
-  return <h1>About</h1>
-}
+// const About = ()=>{
+//   return <h1>About</h1>
+// }
 
 const UserInfo = ()=>{
   return <h1>UserInfo</h1>
 }
 
-const Page404 = ()=>{
-  return <h1>404</h1>
-}
+// const Page404 = ()=>{
+//   return <h1>404</h1>
+// }
 
 function App() {
   // const [posts, setPosts] =  useState([]);
